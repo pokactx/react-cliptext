@@ -63,6 +63,7 @@ jobs:
     name: Publish npm
     needs: verify
     runs-on: ubuntu-latest
+    environment: npm-publish
     if: ${{ startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'npm')) }}
     steps:
       - name: Checkout
@@ -101,7 +102,7 @@ jobs:
           deno-version: v2.x
 
       - name: Publish to JSR
-        run: deno publish
+        run: deno publish --unstable-sloppy-imports --no-check
 
   publish_jsr_cli:
     name: Publish JSR (jsr CLI)
