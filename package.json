@@ -1,6 +1,6 @@
 {
   "name": "react-cliptext",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Modern TypeScript React component and hook for copying text to clipboard with React 19 support",
   "keywords": [
     "clipboard",
@@ -41,6 +41,8 @@
     "test:ui": "vitest --ui",
     "check": "ultracite check",
     "fix": "ultracite fix",
+    "version:sync": "bun ./scripts/sync-version.mjs",
+    "version": "bun run version:sync && git add package.json deno.json jsr.json",
     "prepare": "lefthook install"
   },
   "dependencies": {
