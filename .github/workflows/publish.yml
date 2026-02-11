@@ -24,12 +24,14 @@ on:
           - deno
           - jsr
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   verify:
     name: Verify
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -61,11 +63,6 @@ jobs:
     name: Publish npm
     needs: verify
     runs-on: ubuntu-latest
-    env:
-      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-    permissions:
-      contents: read
-      id-token: write
     if: ${{ startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'npm')) }}
     steps:
       - name: Checkout
@@ -77,7 +74,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
@@ -86,23 +83,13 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Publish to npm (token)
-        if: ${{ env.NPM_TOKEN != '' }}
-        run: npm publish --access public --provenance
-        env:
-          NODE_AUTH_TOKEN: ${{ env.NPM_TOKEN }}
-
-      - name: Publish to npm (trusted publishing)
-        if: ${{ env.NPM_TOKEN == '' }}
-        run: npm publish --access public --provenance
+      - name: Publish to npm (Trusted Publishing)
+        run: npm publish --access public
 
   publish_jsr_deno:
     name: Publish JSR (deno publish)
     needs: verify
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     if: ${{ (startsWith(github.ref, 'refs/tags/v') || (github.event_name == 'workflow_dispatch' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'jsr'))) && (github.event_name != 'workflow_dispatch' || github.event.inputs.jsr_publisher == 'deno') }}
     steps:
       - name: Checkout
@@ -120,18 +107,21 @@ jobs:
     name: Publish JSR (jsr CLI)
     needs: verify
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      id-token: write
     if: ${{ github.event_name == 'workflow_dispatch' && (github.event.inputs.target == 'all' || github.event.inputs.target == 'jsr') && github.event.inputs.jsr_publisher == 'jsr' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
 
       - name: Publish to JSR
         run: npx jsr publish
