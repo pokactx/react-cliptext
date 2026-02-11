@@ -1,0 +1,20 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": [
+    "./node_modules/ultracite/config/oxlint/core/.oxlintrc.json",
+    "./node_modules/ultracite/config/oxlint/react/.oxlintrc.json"
+  ],
+  "overrides": [
+    {
+      "files": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/test-setup.ts"],
+      "rules": {
+        "no-empty-function": "off",
+        "jest/no-hooks": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/prefer-tag-over-role": "off",
+        "react_perf/jsx-no-new-function-as-prop": "off",
+        "typescript/consistent-type-imports": "off"
+      }
+    }
+  ]
+}

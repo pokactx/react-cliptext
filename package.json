@@ -1,0 +1,69 @@
+{
+  "name": "react-cliptext",
+  "version": "1.0.0",
+  "description": "Modern TypeScript React component and hook for copying text to clipboard with React 19 support",
+  "keywords": [
+    "clipboard",
+    "copy",
+    "react",
+    "react19",
+    "typescript"
+  ],
+  "license": "MIT",
+  "author": "pokactx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pokactx/react-cliptext"
+  },
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.mts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:ui": "vitest --ui",
+    "check": "ultracite check",
+    "fix": "ultracite fix",
+    "prepare": "lefthook install"
+  },
+  "dependencies": {
+    "copy-to-clipboard": "^3.3.3"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "^19.2.13",
+    "@vitest/ui": "^4.0.18",
+    "jsdom": "^28.0.0",
+    "lefthook": "^2.1.0",
+    "oxfmt": "^0.31.0",
+    "oxlint": "^1.46.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3",
+    "ultracite": "7.1.5",
+    "vitest": "^4.0.18"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  }
+}
