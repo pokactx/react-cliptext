@@ -3,9 +3,21 @@ import type { JSX, ReactElement } from "react";
 import copy from "copy-to-clipboard";
 import React, { cloneElement } from "react";
 
+/**
+ * Options forwarded to `copy-to-clipboard` when executing the copy action.
+ */
 export interface CopyToClipboardOptions {
+  /**
+   * Enables debug mode for the underlying `copy-to-clipboard` library.
+   */
   debug?: boolean;
+  /**
+   * Message shown by the browser in fallback copy flows.
+   */
   message?: string;
+  /**
+   * MIME-like format hint passed to the copy implementation.
+   */
   format?: string;
 }
 
@@ -16,6 +28,9 @@ interface ChildCommonProps<E extends Element> {
   role?: string;
 }
 
+/**
+ * Props for the `CopyToClipboard` component.
+ */
 export interface CopyToClipboardProps<
   E extends Element = HTMLElement,
   P = unknown,
@@ -31,6 +46,12 @@ export interface CopyToClipboardProps<
   options?: CopyToClipboardOptions;
 }
 
+/**
+ * React component that copies `text` to the clipboard when its child is activated.
+ *
+ * It clones the single `children` element and wires `onClick` / keyboard handling,
+ * while still calling existing child handlers.
+ */
 export const CopyToClipboard = <E extends Element = HTMLElement, P = unknown>({
   text,
   children,
