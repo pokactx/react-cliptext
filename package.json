@@ -1,6 +1,6 @@
 {
   "name": "react-cliptext",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Modern TypeScript React component and hook for copying text to clipboard with React 19 support",
   "keywords": [
     "clipboard",
