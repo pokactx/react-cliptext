@@ -121,6 +121,26 @@ On click: copy → `CopyToClipboard` `onClick` → child `onClick`.
 - TypeScript types included
 - ESM/CJS exports
 
+## Publishing (npm)
+
+CI publishes on tag `v*` via [Trusted Publishing](https://docs.npmjs.com/trusted-publishers) (no long-lived `NPM_TOKEN`).
+
+1. On [npm](https://www.npmjs.com/), open **Access** → **Trusted Publishers** (or the package settings after the first publish).
+2. Add **GitHub Actions**:
+   - Repository: `pokactx/react-cliptext`
+   - Workflow filename: `publish.yml`
+   - Environment name: `npm-publish` (must match [`.github/workflows/publish.yml`](.github/workflows/publish.yml))
+3. In GitHub: **Settings** → **Environments** → create `npm-publish` (optional protection rules).
+4. Tag and push: `git tag v1.0.0 && git push origin v1.0.0`
+
+Local publish (requires login):
+
+```bash
+npm login
+bun run build
+npm publish --access public
+```
+
 ## Development
 
 ```bash
