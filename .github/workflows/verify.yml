@@ -16,12 +16,22 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
+
+      - name: Validate commit messages
+        run: |
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            bunx commitlint --from "${{ github.event.pull_request.base.sha }}" --to HEAD
+          else
+            bunx commitlint --from "${{ github.event.before }}" --to "${{ github.event.after }}"
+          fi
 
       - name: Lint and format check
         run: bun run check

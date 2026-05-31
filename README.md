@@ -120,3 +120,25 @@ On click: copy → `CopyToClipboard` `onClick` → child `onClick`.
 - React `>=18`
 - TypeScript types included
 - ESM/CJS exports
+
+## Commits
+
+This repository uses [Conventional Commits](https://www.conventionalcommits.org/). Commit messages are checked locally (Lefthook `commit-msg`) and in CI (`commitlint`).
+
+```
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+```
+
+Common types: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`, `ci`, `build`, `perf`.
+
+Examples:
+
+```
+feat: add reset helper to useCopyToClipboard
+fix(copy): merge refs on CopyToClipboard child
+docs: clarify Clipboard API requirements
+```
