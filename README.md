@@ -121,6 +121,14 @@ On click: copy → `CopyToClipboard` `onClick` → child `onClick`.
 - TypeScript types included
 - ESM/CJS exports
 
+## Development
+
+```bash
+bun install
+bunx lefthook install
+bun run test --run
+```
+
 ## Commits
 
 This repository uses [Conventional Commits](https://www.conventionalcommits.org/). Commit messages are checked locally (Lefthook `commit-msg`) and in CI (`commitlint`).

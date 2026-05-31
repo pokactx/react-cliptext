@@ -6,6 +6,13 @@
   ],
   "overrides": [
     {
+      "files": ["scripts/**/*.mjs"],
+      "rules": {
+        "import/no-nodejs-modules": "off",
+        "jest/require-hook": "off"
+      }
+    },
+    {
       "files": ["src/**/*.test.ts", "src/**/*.test.tsx", "src/test-setup.ts"],
       "rules": {
         "no-empty-function": "off",
