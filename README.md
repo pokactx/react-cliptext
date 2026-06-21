@@ -77,24 +77,24 @@ function App() {
 
 ### `CopyToClipboard` Props
 
-| Prop | Type | Description |
-|------|------|-------------|
-| `text` | `string` | Text to copy. |
-| `children` | `ReactElement` | A single React element used as the trigger. |
-| `onCopy` | `(text: string, result: boolean) => void` | Called after each copy attempt. |
-| `options` | `CopyToClipboardOptions` | Forwarded to `copy-to-clipboard`. |
-| `onClick` | `(event: MouseEvent) => void` | Additional click handler merged with child's. |
-| `onKeyDown` | `(event: KeyboardEvent) => void` | Additional keydown handler merged with child's. |
+| Prop        | Type                                      | Description                                     |
+| ----------- | ----------------------------------------- | ----------------------------------------------- |
+| `text`      | `string`                                  | Text to copy.                                   |
+| `children`  | `ReactElement`                            | A single React element used as the trigger.     |
+| `onCopy`    | `(text: string, result: boolean) => void` | Called after each copy attempt.                 |
+| `options`   | `CopyToClipboardOptions`                  | Forwarded to `copy-to-clipboard`.               |
+| `onClick`   | `(event: MouseEvent) => void`             | Additional click handler merged with child's.   |
+| `onKeyDown` | `(event: KeyboardEvent) => void`          | Additional keydown handler merged with child's. |
 
 Also accepts any `React.HTMLAttributes<HTMLElement>` (except `onCopy`, `onClick`, `onKeyDown`).
 
 ### `CopyToClipboardOptions`
 
-| Option | Type | Description |
-|--------|------|-------------|
-| `debug` | `boolean` | Enable debug logging. |
-| `message` | `string` | Custom message for the clipboard prompt (legacy browsers). |
-| `format` | `string` | MIME type for the clipboard data (e.g. `"text/plain"`). |
+| Option    | Type      | Description                                                |
+| --------- | --------- | ---------------------------------------------------------- |
+| `debug`   | `boolean` | Enable debug logging.                                      |
+| `message` | `string`  | Custom message for the clipboard prompt (legacy browsers). |
+| `format`  | `string`  | MIME type for the clipboard data (e.g. `"text/plain"`).    |
 
 ### `useCopyToClipboard`
 
@@ -103,10 +103,10 @@ const [copiedText, copy] = useCopyToClipboard();
 //     ^string|null  ^(text: string) => Promise<boolean>
 ```
 
-| Return value | Type | Description |
-|-------------|------|-------------|
-| `copiedText` | `string \| null` | Last successfully copied text, or `null` if nothing has been copied yet. |
-| `copy` | `(text: string) => Promise<boolean>` | Copies text and resolves `true` on success, `false` on failure. |
+| Return value | Type                                 | Description                                                              |
+| ------------ | ------------------------------------ | ------------------------------------------------------------------------ |
+| `copiedText` | `string \| null`                     | Last successfully copied text, or `null` if nothing has been copied yet. |
+| `copy`       | `(text: string) => Promise<boolean>` | Copies text and resolves `true` on success, `false` on failure.          |
 
 ## Behavior Notes
 
