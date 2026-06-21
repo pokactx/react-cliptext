@@ -1,7 +1,7 @@
 # React ClipText
 
-[![npm version](https://img.shields.io/npm/v/react-cliptext)](https://www.npmjs.com/package/react-cliptext)
-[![license](https://img.shields.io/npm/l/react-cliptext)](https://github.com/pokactx/react-cliptext/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/%40pokactx%2Freact-cliptext)](https://www.npmjs.com/package/@pokactx/react-cliptext)
+[![license](https://img.shields.io/npm/l/%40pokactx%2Freact-cliptext)](https://github.com/pokactx/react-cliptext/blob/main/LICENSE)
 
 Lightweight React clipboard utilities for TypeScript projects.
 
